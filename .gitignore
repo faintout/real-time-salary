@@ -1,7 +1,46 @@
- .history
- node_modules/
- .vscode
- .env
- .env.local
- .env.development.local
- .env.test.local
+# 依赖目录
+node_modules/
+
+# 编译输出
+out/
+*.vsix
+
+# 历史记录
+.history/
+
+# VSCode配置（保留launch.json和tasks.json，忽略其他）
+.vscode/settings.json
+.vscode/extensions.json
+
+# 环境变量
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 日志文件
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 操作系统生成的文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 临时文件
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# 测试文件
+test-*.js
+test-*.ts
