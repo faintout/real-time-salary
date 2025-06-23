@@ -1,0 +1,105 @@
+{
+  "name": "real-time-salary",
+  "displayName": "实时工资计算器",
+  "description": "实时计算当前工作收入的VSCode插件",
+  "version": "0.0.1",
+  "publisher": "fainout",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fainout/real-time-salary.git"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "real-time-salary.start",
+        "title": "开始实时工资计算"
+      },
+      {
+        "command": "real-time-salary.stop",
+        "title": "停止实时工资计算"
+      },
+      {
+        "command": "real-time-salary.settings",
+        "title": "工资计算设置"
+      },
+      {
+        "command": "real-time-salary.updateHolidays",
+        "title": "更新节假日信息"
+      }
+    ],
+    "configuration": {
+      "title": "实时工资计算器",
+      "properties": {
+        "realTimeSalary.monthlySalary": {
+          "type": "number",
+          "default": 10000,
+          "description": "月总工资（元）"
+        },
+        "realTimeSalary.workStartTime": {
+          "type": "string",
+          "default": "09:00",
+          "description": "上班时间（格式：HH:MM）"
+        },
+        "realTimeSalary.workEndTime": {
+          "type": "string",
+          "default": "18:00",
+          "description": "下班时间（格式：HH:MM）"
+        },
+        "realTimeSalary.workDaysPerWeek": {
+          "type": "number",
+          "default": 5,
+          "description": "每周工作天数"
+        },
+        "realTimeSalary.offWorkMessage": {
+          "type": "string",
+          "default": " 💰下班啦！",
+          "description": "下班时间的提示词"
+        },
+        "realTimeSalary.autoFetchHolidays": {
+          "type": "boolean",
+          "default": true,
+          "description": "自动从API获取节假日信息"
+        },
+        "realTimeSalary.holidays": {
+          "type": "array",
+          "default": [],
+          "description": "手动设置的节假日列表（格式：YYYY-MM-DD），仅在关闭自动获取时生效"
+        },
+        "realTimeSalary.workdays": {
+          "type": "array",
+          "default": [],
+          "description": "手动设置的调休工作日列表（格式：YYYY-MM-DD），仅在关闭自动获取时生效"
+        },
+        "realTimeSalary.salaryPrefix": {
+          "type": "string",
+          "default": "实时💲：",
+          "description": "实时工资显示的前缀文字"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
